@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Imani.Solutions.Core.API.Util;
+
 // using HeartDiseasePredictionConsoleApp.DataStructures;
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -105,14 +107,16 @@ namespace PlayGround.ML.NET.Predictive.Maintenance
 
         private static IDataView TrainFromDb(MLContext mlContext)
         {
-            var connectionString = "Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase";
-            
+            DatabaseLoader loader = mlContext.Data.CreateDatabaseLoader<CarMaintenance>();
+           
+            var connectionString = new ConfigSettings().GetProperty("ConnectionString");
 
-            string sqlCommand = "SELECT CAST(Size as REAL) as Size, CAST(NumBed as REAL) as NumBed, Price FROM House";
+
+            string sqlCommand = "SELECT slno,vehicle_type,brand,model,engine_type,make_year,region,mileage_range,mileage,oil_filter,engine_oil,washer_plug_drain,dust_and_pollen_filter,whell_alignment_and_balancing,air_clean_filter,fuel_filter,spark_plug,brake_fluid,brake_and_clutch_oil,transmission_fluid,brake_pads,clutch,coolant,cost,(CASE WHEN label=1 THEN true ELSE false END)::boolean as label FROM cars.maintenance_training";
 
             DatabaseSource dbSource = new DatabaseSource(Npgsql.NpgsqlFactory.Instance, connectionString, sqlCommand);
 
-            return null;
+            return loader.Load(dbSource);
         }
 
         private static void testPrediction(MLContext mlContext)

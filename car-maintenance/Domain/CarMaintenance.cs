@@ -72,7 +72,7 @@ namespace PlayGround.ML.NET.Predictive.Maintenance.Domain
         [LoadColumn(23)]
         public float cost  { get; set;}
 
-          [LoadColumn(13)]
+        [LoadColumn(24)]
         public bool label { get; set; }
     }
 }

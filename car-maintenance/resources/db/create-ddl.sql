@@ -25,4 +25,4 @@ brake_pads real,
 clutch real,
 coolant real,
 cost real,
-label real);
+label smallint);

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Imani.Solutions.Core" Version="0.1.0" />
     <PackageReference Include="Microsoft.ML" Version="3.0.0-preview.23511.1" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="3.0.0-preview.23511.1" />
     <PackageReference Include="Npgsql" Version="7.0.6" />
