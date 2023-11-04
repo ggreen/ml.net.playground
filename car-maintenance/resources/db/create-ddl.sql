@@ -1,0 +1,28 @@
+CREATE SCHEMA IF NOT EXISTS cars;
+
+create table cars.maintenance_training
+(slno real,
+vehicle_type real,
+brand real,
+model real,
+engine_type real,
+make_year real,
+region real,
+mileage_range real,
+mileage real,
+oil_filter real,
+engine_oil real,
+washer_plug_drain real,
+dust_and_pollen_filter real,
+whell_alignment_and_balancing real,
+air_clean_filter real,
+fuel_filter real,
+spark_plug real,
+brake_fluid real,
+brake_and_clutch_oil real,
+transmission_fluid real,
+brake_pads real,
+clutch real,
+coolant real,
+cost real,
+label real);
